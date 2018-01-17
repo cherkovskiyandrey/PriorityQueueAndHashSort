@@ -1,5 +1,6 @@
 package ru.sbrf;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,8 @@ public class Solution {
 
 
         int result = 0;
-        Set<Integer> floors = new HashSet<>(X);
+        //Set<Integer> floors = new HashSet<>(M);
+        int[] floors = new int[M + 1];
         long currentWeight = 0;
         int lastB = 0;
         for (int i = 0; i < A.length; i++) {
@@ -30,9 +32,10 @@ public class Solution {
             if ((!lastCycle && (nextWeight > Y || (i - lastB + 1) == X)) ||
                     (lastCycle && (currentWeight <= Y && ((i - lastB) <= X)))) {
                 currentWeight = 0;
-                floors.clear();
+                Arrays.setAll(floors, f -> 0);
                 for (int j = lastB; j <= i; j++) {
-                    if (floors.add(B[j])) {
+                    if (floors[B[j]] == 0) {
+                        floors[B[j]] = 1;
                         result++;
                     }
                 }

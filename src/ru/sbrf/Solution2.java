@@ -7,6 +7,7 @@ public class Solution2 {
 
     public static void main(String[] args) {
         System.out.println(solution2(new int[]{0, 7, 11, 13, 14, 15, 16, 20, 21, 22, 23}));
+        System.out.println(solution2(new int[0]));
     }
 
     public static int solution(int[] A) {
@@ -72,7 +73,7 @@ public class Solution2 {
                 ++j;
             }
         }
-        return result + 1;
+        return A.length == 0 ? 0 : result + 1;
     }
 
 }
